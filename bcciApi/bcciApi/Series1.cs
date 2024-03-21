@@ -26,3 +26,5 @@ namespace bcciApi
         public Nullable<System.DateTime> SeriesEndDate { get; set; }
     }
 }
+
+

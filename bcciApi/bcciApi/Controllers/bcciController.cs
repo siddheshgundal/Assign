@@ -12,12 +12,14 @@ namespace bcciApi.Controllers
     {
         private bcciDBEntities db = new bcciDBEntities();
 
+
         // GET: api/bcci
         [HttpGet]
         [Route("api/bcci")]
         public IEnumerable<Series1> Get()
         {
             return db.Series1.ToList();
+           
         }
 
         // GET: api/bcci/5/5
@@ -31,7 +33,16 @@ namespace bcciApi.Controllers
                 return NotFound();
             }
             return Ok(series);
+
+
         }
+
+        // changes done here  are below given 
+  
+
+        //above we have made the changes
+
+
 
        
         // POST: api/bcci
@@ -68,14 +79,40 @@ namespace bcciApi.Controllers
                 return NotFound();
             }
 
+            existingSeries.MatchName = series.MatchName;
+            existingSeries.Team1 = series.Team1;
+            existingSeries.Team2 = series.Team2;
+            existingSeries.MatchDate = series.MatchDate;
+            existingSeries.Venue = series.Venue;
             existingSeries.SeriesName = series.SeriesName;
             existingSeries.SeriesStartDate = series.SeriesStartDate;
             existingSeries.SeriesEndDate = series.SeriesEndDate;
-            // Update other properties as needed
+
             db.SaveChanges();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+        //// DELETE: api/bcci/5
+        //[HttpDelete]
+        //[Route("api/bcci/{id:int}")]
+        //public IHttpActionResult Delete(int id)
+
+
+        //{
+        //    var series = db.Series1.FirstOrDefault(s => s.SeriesID == id);
+        //    if (series == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    db.Series1.Remove(series);
+        //    db.SaveChanges();
+
+        //    return Ok(series);
+        //}
+
+        // DELETE: api/bcci/5
 
         // DELETE: api/bcci/5
         [HttpDelete]
@@ -93,6 +130,8 @@ namespace bcciApi.Controllers
 
             return Ok(series);
         }
+
+
 
         protected override void Dispose(bool disposing)
         {
