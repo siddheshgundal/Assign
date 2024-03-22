@@ -11,7 +11,7 @@ namespace hello1
         static void Main(string[] args)
         {
             string name = Console.ReadLine().ToString();
-            Console.WriteLine("Hello, " + name + "!");
+            Console.WriteLine("Hello world!, " + name + "!");
             Console.ReadKey();
         }
 
